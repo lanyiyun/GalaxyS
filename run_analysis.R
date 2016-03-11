@@ -51,9 +51,16 @@ SittingAve <- aggregate(ActivitySubset$SITTING[,features$V2], list(ActivitySubse
 StandingAve <- aggregate(ActivitySubset$STANDING[,features$V2], list(ActivitySubset$STANDING$Subject), mean)
 LayingAve <- aggregate(ActivitySubset$LAYING[,features$V2], list(ActivitySubset$LAYING$Subject), mean)
 
+WalkingSd <- aggregate(ActivitySubset$WALKING[,features$V2], list(ActivitySubset$WALKING$Subject), sd)
+UpstairsSd <- aggregate(ActivitySubset$WALKING_UPSTAIRS[,features$V2], list(ActivitySubset$WALKING_UPSTAIRS$Subject), sd)
+DownstairsSd <- aggregate(ActivitySubset$WALKING_DOWNSTAIRS[,features$V2], list(ActivitySubset$WALKING_DOWNSTAIRS$Subject), sd)
+SittingSd <- aggregate(ActivitySubset$SITTING[,features$V2], list(ActivitySubset$SITTING$Subject), sd)
+StandingSd <- aggregate(ActivitySubset$STANDING[,features$V2], list(ActivitySubset$STANDING$Subject), sd)
+LayingSd <- aggregate(ActivitySubset$LAYING[,features$V2], list(ActivitySubset$LAYING$Subject), sd)
+
 #' NewDataset is a list containing the average of each variable 
 #' for each activity and each subject. 
-NewDataset <- list(Walking = WalkingAve, WalkingUpstairs = UpstairsAve, WalkingDownstairs = DownstairsAve, Sitting = SittingAve, Standing = StandingAve, Laying = LayingAve)
+NewDataset <- list(WalkingAve, WalkingSd, UpstairsAve, UpstairsSd, DownstairsAve, DownstairsSd, SittingAve, SittingSd, StandingAve, StandingSd, LayingAve, LayingSd)
 write.table(NewDataset, file = "./UCI HAR Dataset/newdata.txt", row.names = FALSE)
 
 
